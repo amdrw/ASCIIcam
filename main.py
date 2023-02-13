@@ -3,7 +3,7 @@ from PIL import Image, ImageTk
 import cv2
 
 window = Tk()
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(-1)
 
 # Window Properties
 Title = "ASCIIcam"
@@ -36,5 +36,8 @@ def show_frames():
     label.after(20, show_frames)
 
 
-show_frames()
+ret, frame = cap.read()
+
+# Display the resulting frame
+cv2.imshow('frame', frame)
 window.mainloop()
